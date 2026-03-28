@@ -24,7 +24,7 @@ form.addEventListener("input", onInputChange);
 function onInputChange(event) {
   const { name, value } = event.target;
 
-  formData[name] = value.trim();
+  formData[name] = value;
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
@@ -35,7 +35,7 @@ form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
 
-  if (!formData.email || !formData.message) {
+  if (!formData.email.trim() || !formData.message.trim()) {
     alert("Fill please all fields");
     return;
   }
